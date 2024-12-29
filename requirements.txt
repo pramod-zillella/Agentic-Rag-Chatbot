@@ -1,0 +1,13 @@
+langgraph
+langsmith
+langchain-community
+langchain-core
+langchain-openai
+pinecone-client
+sentence-transformers
+tqdm
+streamlit
+python-dotenv
+langchain
+langchain_google_genai
+langchain
