@@ -18,15 +18,11 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
 
-if not os.environ.get("OPENAI_API_KEY"):
-  os.environ["OPENAI_API_KEY"] = getpass.getpass("Enter API key for OpenAI: ")
+os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_API_KEY"] = os.environ.get("LANGCHAIN_API_KEY_V2")
 
 llm = ChatOpenAI(model="gpt-4o-mini")
-
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-if not os.environ.get("LANGCHAIN_API_KEY_V2"):
-    os.environ["LANGCHAIN_API_KEY"] = getpass.getpass()
-
 pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
 index_name = "fitness-chatbot-enhanced"
 index = pc.Index(index_name)
