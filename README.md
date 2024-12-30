@@ -1,7 +1,7 @@
 # Agentic RAG Fitness Chatbot
 
 ## Overview
-The Agentic RAG Fitness Chatbot is an AI-powered application designed to provide personalized fitness guidance and workout recommendations. It leverages cutting-edge AI technologies, such as Retrieval-Augmented Generation (RAG), multi-agent systems, and a curated knowledge base, to deliver context-aware and actionable fitness advice. The chatbot focuses on empowering beginners with evidence-based fitness recommendations, real-time video demonstrations, and safety guidelines.
+The Agentic RAG Fitness Chatbot is an AI-powered application designed to provide personalized fitness guidance and workout recommendations. Uses Retrieval-Augmented Generation (RAG), multi-agent systems, and a curated knowledge base, to deliver context-aware and actionable fitness advice. The chatbot focuses on empowering beginners with evidence-based fitness recommendations, real-time video demonstrations, and safety guidelines.
 
 ### LangGraph Workflow
 The LangGraph Workflow outlines the sequence of nodes in the system’s architecture. Each node represents a specific function, from query handling to generating responses. Below is the compiled workflow:
