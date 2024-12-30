@@ -22,7 +22,7 @@ To provide transparency and insights into the system's behavior, the Langsmith t
 ### Langsmith Trace
 The Langsmith Trace captures the flow of the chatbot’s decision-making process, including tool calls and their respective responses. Below is an example trace showcasing a user query and the system's response:
 
-![Langsmith Trace](https://github.com/pramod-zillella/AgenticRagChatbot/blob/main/LangGraph-Trace.png)
+![Langsmith Trace](https://github.com/pramod-zillella/AgenticRagChatbot/blob/main/Langsmith-Trace.png)
 
 ### LangGraph Workflow
 The LangGraph Workflow outlines the sequence of nodes in the system’s architecture. Each node represents a specific function, from query handling to generating responses. Below is the compiled workflow:
