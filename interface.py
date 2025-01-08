@@ -230,11 +230,11 @@ with st.container():
 with st.container():
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("What's the best way to prevent age-related muscle loss?")
-        st.markdown("How can I prevent wrist pain during push-ups and planks?")
+        st.button("What's the best way to prevent age-related muscle loss?")
+        st.button("How can I prevent wrist pain during push-ups and planks?")
     with col2:
-        st.markdown("I sit at a desk all day. What exercises can help with posture?")
-        st.markdown("Can you suggest a full-body workout routine for beginners?")
+        st.button("I sit at a desk all day. What exercises can help with posture?")
+        st.button("Can you suggest a full-body workout routine for beginners?")
         # if st.button("What's a good workout split for building muscle?"):
         #     st.session_state.current_question = "What's a good workout split for building muscle?"
 
