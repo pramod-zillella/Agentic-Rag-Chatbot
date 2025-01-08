@@ -226,24 +226,23 @@ with st.container():
         st.write("<h6 style='text-align: center;'>Ask me anything about workouts, nutrition, or injury prevention!</h6>", unsafe_allow_html=True)
         st.write("<p style='text-align: center;'>To get you started here are a few common fitness questions:</p>", unsafe_allow_html=True)
 
-# Initialize processing state
-if "processing" not in st.session_state:
-    st.session_state.processing = False
-
-# Modified button logic to disable during processing
+# Dynamic quadrant layout using Streamlit's columns
 with st.container():
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("What's the best way to prevent age-related muscle loss?", disabled=st.session_state.processing):
+        if st.button("What's the best way to prevent age-related muscle loss?"):
             st.session_state.current_question = "What's the best way to prevent age-related muscle loss?"
-        if st.button("How can I prevent wrist pain during push-ups and planks?", disabled=st.session_state.processing):
-             st.session_state.current_question = "How can I prevent wrist pain during push-ups and planks?"
+        if st.button("How can I prevent wrist pain during push-ups and planks?"):
+            st.session_state.current_question = "How can I prevent wrist pain during push-ups and planks?"
+        # if st.button("I'm a beginner looking to start a home workout routine. Any advice?"):
+        #     st.session_state.current_question = "I'm a beginner looking to start a home workout routine. Any advice?"
     with col2:
-        if st.button("I sit at a desk all day. What exercises can help with posture?", disabled=st.session_state.processing):
+        if st.button("I sit at a desk all day. What exercises can help with posture?"):
             st.session_state.current_question = "I sit at a desk all day. What exercises can help with posture?"
-        if st.button("Can you suggest a full-body workout routine for beginners?", disabled=st.session_state.processing):
+        if st.button("Can you suggest a full-body workout routine for beginners?"):
             st.session_state.current_question = "Can you suggest a full-body workout routine for beginners?"
-
+        # if st.button("What's a good workout split for building muscle?"):
+        #     st.session_state.current_question = "What's a good workout split for building muscle?"
 
 # Initialize chat history in session state
 if "chat_history" not in st.session_state:
@@ -289,14 +288,14 @@ def display_chat_history():
             
 def stream_response(prompt):
     start_time = time.time()
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant"):  
         with st.spinner("✨ Gathering fitness insights just for you... ✨"):
-            # Set processing state to True before starting processing
-            st.session_state.processing = True
             message_placeholder = st.empty()
+            # message_placeholder.empty()
             full_response = ""
             final_draft = ""
             all_transcripts = {}
+
             for step in graph.stream(
                 {"messages": [HumanMessage(content=prompt)]},
                 stream_mode="values",
@@ -305,17 +304,20 @@ def stream_response(prompt):
                     response_content = step["messages"][-1].content
                     final_draft += response_content
                     response_content = response_content.replace('**', '__')
-                    response_content = response_content.replace('\n\n', '  ')
-                    response_content = response_content.replace('\n', '  ')
+                    response_content = response_content.replace('\n\n', '<br><br>')
+                    response_content = response_content.replace('\n', '<br>')
+
                     for chunk in response_content.split():
                         full_response += chunk + " "
                         time.sleep(0.05)
                         message_placeholder.markdown(full_response + "▌", unsafe_allow_html=True)
+                
                 if "messages" in step:
                     for message in step["messages"]:
-                        if message.type == "tool" and message.artifact:
-                            all_transcripts.update(message.artifact)
-                    message_placeholder.markdown(final_draft, unsafe_allow_html=True)
+                        if message.type == "tool" and message.artifact: #Checks if the message is a tool message and if it contains an artifact
+                            all_transcripts.update(message.artifact) #If the conditions are true then store the artifact in all_transcripts variable
+            message_placeholder.markdown(final_draft, unsafe_allow_html=True) # Final formatted display
+
             if all_transcripts:
                 st.subheader("Video Recommendations:")
                 cols = st.columns(min(3, len(all_transcripts)))
@@ -326,11 +328,9 @@ def stream_response(prompt):
                         st.image(data['thumbnail_url'], use_container_width=True)
                         st.write(f"**{data['title']}**")
                         st.markdown(f"[Watch Video]({data['video_url']})")
-            end_time = time.time()
-            response_time = end_time - start_time
-            # Set processing state to False after processing is complete
-            st.session_state.processing = False
-            return full_response, all_transcripts, response_time
+    end_time = time.time()
+    response_time = end_time - start_time
+    return full_response, all_transcripts, response_time
 
 # Process current question from preselected options or user input
 if st.session_state.current_question:
@@ -352,3 +352,5 @@ if prompt := st.chat_input("What's your fitness or nutrition question?"):
 # Render chat history (once at the end, if needed)
 if len(st.session_state.chat_history) > 0:
     display_chat_history()
+
+
