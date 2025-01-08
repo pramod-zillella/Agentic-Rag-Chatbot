@@ -229,21 +229,30 @@ with st.container():
 # Dynamic quadrant layout using Streamlit's columns
 with st.container():
     col1, col2 = st.columns(2)
-    with col1:
-        if st.button("What's the best way to prevent age-related muscle loss?"):
-            st.session_state.current_question = "What's the best way to prevent age-related muscle loss?"
-        if st.button("How can I prevent wrist pain during push-ups and planks?"):
-            st.session_state.current_question = "How can I prevent wrist pain during push-ups and planks?"
-        # if st.button("I'm a beginner looking to start a home workout routine. Any advice?"):
-        #     st.session_state.current_question = "I'm a beginner looking to start a home workout routine. Any advice?"
-    with col2:
-        if st.button("I sit at a desk all day. What exercises can help with posture?"):
-            st.session_state.current_question = "I sit at a desk all day. What exercises can help with posture?"
-        if st.button("Can you suggest a full-body workout routine for beginners?"):
-            st.session_state.current_question = "Can you suggest a full-body workout routine for beginners?"
-        # if st.button("What's a good workout split for building muscle?"):
-        #     st.session_state.current_question = "What's a good workout split for building muscle?"
+    # with col1:
+    #     if st.button("What's the best way to prevent age-related muscle loss?"):
+    #         st.session_state.current_question = "What's the best way to prevent age-related muscle loss?"
+    #     if st.button("How can I prevent wrist pain during push-ups and planks?"):
+    #         st.session_state.current_question = "How can I prevent wrist pain during push-ups and planks?"
+    #     # if st.button("I'm a beginner looking to start a home workout routine. Any advice?"):
+    #     #     st.session_state.current_question = "I'm a beginner looking to start a home workout routine. Any advice?"
+    # with col2:
+    #     if st.button("I sit at a desk all day. What exercises can help with posture?"):
+    #         st.session_state.current_question = "I sit at a desk all day. What exercises can help with posture?"
+    #     if st.button("Can you suggest a full-body workout routine for beginners?"):
+    #         st.session_state.current_question = "Can you suggest a full-body workout routine for beginners?"
+    #     # if st.button("What's a good workout split for building muscle?"):
+    #     #     st.session_state.current_question = "What's a good workout split for building muscle?"
+    
+                                      
+   with col1:
+        st.markdown("What's the best way to prevent age-related muscle loss?")
+        st.markdown("How can I prevent wrist pain during push-ups and planks?")
 
+    with col2:
+        st.markdown("I sit at a desk all day. What exercises can help with posture?")
+        st.markdown("Can you suggest a full-body workout routine for beginners?")
+        
 # Initialize chat history in session state
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
