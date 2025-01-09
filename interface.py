@@ -223,8 +223,9 @@ with st.container():
     col1, col2, col3 = st.columns([1, 6, 1])
     with col2:
         st.markdown("<h2 style='text-align: center;'>AthleanX Fitness</h2>", unsafe_allow_html=True)
-        st.write("<h6 style='text-align: center;'>Ask me anything about workouts, nutrition, or injury prevention!</h6>", unsafe_allow_html=True)
-        st.write("<p style='text-align: center;'>To get you started here are a few common fitness questions:</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; font-weight: bold;'>Ask me about workouts, nutrition, or injury prevention!</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>To get you started here are a few common fitness questions</p>", unsafe_allow_html=True)
+        
 
 # Dynamic quadrant layout using Streamlit's columns
 with st.container():
@@ -234,15 +235,12 @@ with st.container():
             st.session_state.current_question = "What's the best way to prevent age-related muscle loss?"
         if st.button("How can I prevent wrist pain during push-ups and planks?"):
             st.session_state.current_question = "How can I prevent wrist pain during push-ups and planks?"
-        # if st.button("I'm a beginner looking to start a home workout routine. Any advice?"):
-        #     st.session_state.current_question = "I'm a beginner looking to start a home workout routine. Any advice?"
     with col2:
         if st.button("I sit at a desk all day. What exercises can help with posture?"):
             st.session_state.current_question = "I sit at a desk all day. What exercises can help with posture?"
         if st.button("Can you suggest a full-body workout routine for beginners?"):
             st.session_state.current_question = "Can you suggest a full-body workout routine for beginners?"
-        # if st.button("What's a good workout split for building muscle?"):
-        #     st.session_state.current_question = "What's a good workout split for building muscle?"
+    st.markdown("<p style='text-align: center; font-weight: bold; color: #27AE60;'>Expert guidance in under 10 seconds!</p>", unsafe_allow_html=True)
 
 # Initialize chat history in session state
 if "chat_history" not in st.session_state:
@@ -289,7 +287,7 @@ def display_chat_history():
 def stream_response(prompt):
     start_time = time.time()
     with st.chat_message("assistant"):  
-        with st.spinner("✨ Gathering fitness insights just for you... ✨"):
+        with st.spinner("✨ Gathering fitness insights... ✨"):
             message_placeholder = st.empty()
             # message_placeholder.empty()
             full_response = ""
