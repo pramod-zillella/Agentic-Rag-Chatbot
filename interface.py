@@ -224,7 +224,7 @@ with st.container():
     with col2:
         st.markdown("<h2 style='text-align: center;'>AthleanX Fitness</h2>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center; font-weight: bold;'>Ask me about workouts, nutrition, or injury prevention!</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>To get you started here are a few common fitness questions</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Here are a few common fitness questions:</p>", unsafe_allow_html=True)
         
 
 # Dynamic quadrant layout using Streamlit's columns
@@ -240,7 +240,7 @@ with st.container():
             st.session_state.current_question = "I sit at a desk all day. What exercises can help with posture?"
         if st.button("Can you suggest a full-body workout routine for beginners?"):
             st.session_state.current_question = "Can you suggest a full-body workout routine for beginners?"
-    st.markdown("<p style='text-align: center; font-weight: bold; color: #27AE60;'>Expert guidance in under 10 seconds!</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-weight: bold; color: #27AE60;'>Expert advice in under 10 seconds!</p>", unsafe_allow_html=True)
 
 # Initialize chat history in session state
 if "chat_history" not in st.session_state:
