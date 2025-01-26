@@ -305,4 +305,4 @@ if prompt := st.chat_input("What's your fitness or nutrition question?"):
     add_message("assistant", response, recommendations, response_time)
     st.rerun()
 
-# display_chat_history()
+display_chat_history()
