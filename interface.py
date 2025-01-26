@@ -31,7 +31,7 @@ embed_model = SentenceTransformer('multi-qa-mpnet-base-dot-v1')
 
 @tool(response_format="content_and_artifact")
 def retrieve(query: str):
-    """Retrieve fitness-related context and information based on the user’s query."""
+    """Retrieve detailed fitness information, including exercises, nutrition, and injury prevention strategies, based on the user’s input."""
     query_embedding = embed_model.encode(query).tolist()
     results = index.query(vector=query_embedding, top_k=5, include_metadata=True)
     
@@ -114,7 +114,10 @@ def generate(state: MessagesState):
           all_transcripts.update(doc.artifact)
 
     system_message_content = f"""
-    You are a professional fitness and workout assistant powered by authenticated fitness knowledge. Your primary purpose is to assist beginners in their fitness journey by providing evidence-based advice.
+    You are a professional fitness and workout assistant specializing in providing evidence-based advice tailored to beginners. You assist with:
+    - Exercise recommendations for different fitness goals (e.g., muscle gain, weight loss, flexibility).
+    - Nutrition advice, including meal planning and supplementation.
+    - Safety and injury prevention during workouts.
 
     CONTEXT PROCESSING:
     - First analyze all provided context thoroughly before responding
@@ -302,4 +305,4 @@ if prompt := st.chat_input("What's your fitness or nutrition question?"):
     add_message("assistant", response, recommendations, response_time)
     st.rerun()
 
-display_chat_history()
+# display_chat_history()
