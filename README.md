@@ -6,7 +6,7 @@ The Agentic RAG Fitness Chatbot is an AI-powered application designed to provide
 ### LangGraph Workflow
 The LangGraph Workflow outlines the sequence of nodes in the system’s architecture. Each node represents a specific function, from query handling to generating responses. Below is the compiled workflow:
 
-![LangGraph Workflow](https://github.com/pramod-zillella/AgenticRagChatbot/blob/main/LangGraph-Workflow.png)
+![LangGraph Workflow](https://github.com/pramod-zillella/Agentic-Rag-Chatbot/blob/main/LangGraph-Workflow.png)
 
 ## Architecture
 The system consists of the following components:
