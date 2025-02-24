@@ -3,7 +3,7 @@ langsmith
 langchain-community
 langchain-core
 langchain-openai
-pinecone-client
+pinecone
 sentence-transformers
 tqdm
 streamlit
