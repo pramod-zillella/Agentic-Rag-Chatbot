@@ -38,7 +38,7 @@ def retrieve(query: str):
     chunk_ids = set()
     video_ids = set()
 
-    for match in results['matches']:
+    for match in results.matches:
         chunk_id = match['id']
         video_id, chunk_info = chunk_id.split('_', 1)
         chunk_number, total_chunks = chunk_info.split(' of ')
@@ -56,7 +56,7 @@ def retrieve(query: str):
     results = index.fetch(ids=chunk_ids_list)
     video_chunks = defaultdict(list)
 
-    for chunk_id, chunk_data in results['vectors'].items():
+    for chunk_id, chunk_data in  results.vectors.items():
         video_id = chunk_data['metadata']['video_id']
         chunk_content = chunk_data['metadata']['content']
         thumbnail_url = chunk_data['metadata'].get('thumbnail_url', None)
