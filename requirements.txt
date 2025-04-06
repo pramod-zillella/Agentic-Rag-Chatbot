@@ -4,10 +4,13 @@ langchain-community
 langchain-core
 langchain-openai
 pinecone
-sentence-transformers
 tqdm
 streamlit
 python-dotenv
 langchain
 langchain_google_genai
 langchain
+torch==2.1.2 
+transformers==4.37.2 
+sentence-transformers==2.2.2 
+accelerate==0.27.2
