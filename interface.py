@@ -23,6 +23,11 @@ os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_API_KEY"] = os.environ.get("LANGCHAIN_API_KEY_V2")
 
+# Authenticate with Hugging Face
+huggingface_token = os.environ.get("HUGGINGFACE_HUB_TOKEN")
+if huggingface_token:
+    login(huggingface_token)
+    
 llm = ChatOpenAI(model="gpt-4o-mini")
 pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
 index_name = "fitness-chatbot-enhanced"
