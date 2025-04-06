@@ -10,7 +10,7 @@ python-dotenv
 langchain
 langchain_google_genai
 langchain
-torch==2.1.2 
-transformers==4.37.2 
-sentence-transformers==2.2.2 
-accelerate==0.27.2
+torch
+transformers
+sentence-transformers
+accelerate
